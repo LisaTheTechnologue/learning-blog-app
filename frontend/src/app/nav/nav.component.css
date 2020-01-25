@@ -1,0 +1,21 @@
+/* Global
+Schema:
+#ffffff
+#eeeeee
+#ff9681
+#8f8d8e
+*/
+
+.navbar {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border: 0;
+    border-radius: 0;
+    margin-bottom: 0;
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+.navbar-nav li a:hover {
+    color: #ff9681 !important;
+}

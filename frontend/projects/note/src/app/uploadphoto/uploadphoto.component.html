@@ -1,0 +1,23 @@
+<h1>Django REST API with Angular 7 File Upload Example</h1>
+<div>
+    <div *ngIf="url">
+        <iframe width="50%" height="300" [src]="url"></iframe>
+    </div>
+    <!-- <div [innerHTML]="imageURL"></div> -->
+    <form (ngSubmit)="onSubmit()">
+
+        <input type="url" name="photo" [(ngModel)]="imageURL" />
+        <button type="submit">Link</button>
+
+    </form>
+    <!-- <div *ngIf="response && imageURL">
+        <img [src]='imageURL' />
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+        <input type="file" name="photo" (change)="onChange($event)" />
+        <button type="submit">Upload Image File</button>
+
+    </form> -->
+</div>

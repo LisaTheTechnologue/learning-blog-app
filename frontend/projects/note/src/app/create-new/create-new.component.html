@@ -1,0 +1,121 @@
+<div class="container">
+    <div class="container-fluid bg-1 text-center">
+        <h1>Note</h1>
+    </div>
+    <div>
+        <h4 *ngIf="status" [ngClass]="success ? 'text-success' : 'text-danger'">{{message}}</h4>
+        <h4><small>All fields are required</small></h4>
+        <div class="row well text-center">
+            <form class="form-horizontal" (ngSubmit)="onSubmit()">
+                <div class="col-sm-12">
+                    <div *ngIf="note" class="row">
+                        <div class=" form-group">
+                            <label class="control-label col-sm-2" for="language">Language</label>
+                            <div class="col-sm-9">
+                                <select class="form-control" id="language" (ngModelChange)="onChangeT($event)" [(ngModel)]="note.language" name="language">
+                                    <option value=""></option>
+                                    <option value="french">French</option>
+                                    <option value="english">English</option>
+                                </select></div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="title">Title</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="title" name="title" [(ngModel)]="note.title"></div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="desc">Description</label>
+                            <div class="col-sm-9"><textarea type="text" class="form-control" id="desc" name="desc" [(ngModel)]="note.desc"></textarea></div>
+
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="date">Date</label>
+                            <div class="col-sm-9">
+                                <input type="date" class="form-control" id="date" name="date" [(ngModel)]="note.created_on">
+
+                            </div>
+                        </div>
+                        <!-- <div class="form-group">
+                            <label class="control-label col-sm-2" for="image">Choose Image</label>
+                            <a id="image" name="image" class="btn btn-danger btn-block" data-toggle="modal" data-target="#imageModal">Upload Image</a>
+                        </div> -->
+                    </div>
+                    <div class="row justify-content-around">
+                        <div class="col-md-3">
+                            <button type="button" name="draft" class="btn btn-info btn-block">Draft</button>
+                        </div>
+                        <div class="col-sm-3">
+                            <button type="reset" class="btn btn-warning btn-block">Reset</button>
+                        </div>
+                        <div class="col-md-3">
+                            <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                        </div>
+                        <div class="col-md-3">
+                            <a name="discard" class="btn btn-danger btn-block" data-toggle="modal" data-target="#discardModal">Discard</a>
+                        </div>
+
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    <!--Image Modal-->
+    <!-- <div class="modal fade" id="discardModal" tabindex="-1" role="dialog" aria-labelledby="discardModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="discardModalLabel">Image Upload</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                    <div class="modal-body">
+                        <form (ngSubmit)="onImageSubmit($event)">
+                            <div class="form-group">
+                                <input type="file" name="image" />
+                            </div>
+                            <div class="form-group">
+                                <button class="btn btn-primary">Upload</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="row justify-content-end">
+                            <div class="col-2">
+                                <button type="button" class="btn btn-secondary btn-block" data-dismiss="modal">Done</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div> -->
+    <!--Discard Modal -->
+    <div class="modal fade" id="discardModal" tabindex="-1" role="dialog" aria-labelledby="discardModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="discardModalLabel">Just double check</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Did you save or submit your input yet?
+                </div>
+                <div class="modal-footer">
+                    <div class="row justify-content-end">
+                        <div class="col-2">
+                            <button type="button" class="btn btn-secondary btn-block" data-dismiss="modal">Stay</button>
+                        </div>
+                        <div class="col-2"><button type="button" class="btn btn-danger btn-block" (click)="onDiscard()">Leave</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

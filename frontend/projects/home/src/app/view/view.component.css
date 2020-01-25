@@ -1,0 +1,21 @@
+/* Global
+Schema:
+#ffffff
+#eeeeee
+#ff9681
+#8f8d8e
+#c8b7a7 highlighted
+*/
+
+.bg-1 {
+    color: #ff9681;
+}
+
+.container-fluid {
+    padding-top: 70px;
+    padding-bottom: 70px;
+}
+
+img {
+    width: 30%;
+}

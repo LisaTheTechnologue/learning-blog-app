@@ -1,0 +1,72 @@
+<div class="container">
+    <div class="container-fluid bg-1 text-center">
+    <h1>Category</h1>   
+    </div>
+      <div class="col-lg-12 ">
+        <div class="row well">
+                
+            <div class="col-md-12 ">          
+                
+                <div class="col-md-7">            
+                    <h4 *ngIf="status" 
+                    [ngClass]="success ? 'text-success' : 'text-danger'"
+                    [(ngModel)]="message">Successfully deleted!</h4> 
+                </div>   
+                <div class="col-md-4 text-right">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search" [(ngModel)]="searchCategory" >
+                        <div class="input-group-btn">
+                          <button class="btn btn-default " type="submit" (click)="onSearchChange(searchCategory)">
+                            <i class="material-icons md-8">search</i>
+                          </button>
+                        </div>
+                      </div>
+                </div>  
+                <div class="col-sm-1">                   
+                    <button class="btn btn-success  btn-sm" type="submit" [routerLink]="['/category/create']">
+                        <i class="material-icons">add</i> 
+                    </button>
+                </div>
+            </div>
+            <div class="col-lg-12 ml-auto mr-auto " style="margin-top:10px;">
+                <div *ngIf="categorys.length !== 0" class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>                          
+                        
+                        <th>Abbreviation</th>
+                        <th>Description</th>
+                        <th class="text-right">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let category of categorys| paginate: config">
+                        
+                        <td>{{category.category_abrev}}</td>
+                        <td>{{(category.category_desc.length>50)? (category.category_desc| slice:0:50)+'..':(category.category_desc)}}</td>
+                        <td class="td-actions text-right">                             
+                            <a type="button" class="btn btn-success btn-just-icon btn-sm "
+                            style="margin-left:10px;"
+                            [routerLink]="['/category/edit',category.id]">
+                                <i class="material-icons">edit</i>
+                            </a>
+
+                            <button (click)="deleteCategory(category.id)" type="button" rel="tooltip" class="btn btn-danger btn-just-icon btn-sm" data-original-title="" title="" style="margin-left:10px;">
+                                <i class="material-icons">delete</i>
+                            </button>
+                        </td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+            <div class="col-md-6 text-left">                   
+                {{totalitems}} <b> categories are found.</b>
+            </div>
+            <pagination-controls class="col-md-6 text-right"
+                [maxSize]="maxSize"  
+                (pageChange)="pageChanged($event)">
+            </pagination-controls>
+        </div>
+  </div>
+  </div>
+</div>
